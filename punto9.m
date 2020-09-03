@@ -1,3 +1,4 @@
+
 importedData = importdata('portfolio100.txt');
 data = importedData(:,2:end);
 
@@ -35,9 +36,12 @@ for i=1:fdata
    
     distanceActiveJaccard(i)= (a)/(a+b+c);
 end
-
 PActive = prctile(distanceActiveJaccard,90);
 IActive = find(distanceActiveJaccard > PActive);
+
+outliers = importedData(IActive,1);
+disp(outliers);
+
 plot(importedData(:,1),distanceActiveJaccard,'o')
 hold on
 plot(importedData(IActive,1), distanceActiveJaccard(IActive),'or')
