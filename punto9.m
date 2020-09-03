@@ -1,4 +1,3 @@
-
 importedData = importdata('portfolio100.txt');
 data = importedData(:,2:end);
 
@@ -29,10 +28,10 @@ end
 for i=1:fdata
     
     mcon = confusionmat(binaryActiveArray,binaryMatrix(i,:));
-    a = mcon(1,1);
-    b = mcon(1,2);
-    c = mcon(2,1);
-    d = mcon(2,2);
+    d = mcon(1,1);
+    c = mcon(1,2);
+    b = mcon(2,1);
+    a = mcon(2,2);
    
     distanceActiveJaccard(i)= (a)/(a+b+c);
 end

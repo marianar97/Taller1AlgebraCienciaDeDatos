@@ -31,10 +31,10 @@ end
 for i=1:cdata
     
     mcon = confusionmat(binaryArray,binaryMatrix(:,i));
-    a = mcon(1,1);
-    b = mcon(1,2);
-    c = mcon(2,1);
-    d = mcon(2,2);
+    d = mcon(1,1);
+    c = mcon(1,2);
+    b = mcon(2,1);
+    a = mcon(2,2);
     
     distanceDice(i)= (2*a)/(2*a+b+c);
     distanceJaccard(i)= (a)/(a+b+c);
