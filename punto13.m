@@ -17,6 +17,8 @@ for n=1:1000
     err(n) = cond(cov_n);
 end
 
+disp(max(err));
+
 plot(err);
 title(['Condition number: ', num2str(con),' Condition number reduced: ', num2str(err(end))]);
 xlabel("Iteration");
