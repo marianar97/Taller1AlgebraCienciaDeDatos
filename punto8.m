@@ -37,27 +37,24 @@ for i=1:cdata
     a = mcon(2,2);
     
     distanceDice(i)= (2*a)/(2*a+b+c);
-    distanceJaccard(i)= (a)/(a+b+c);
+    distanceJaccard(i)=(a)/(a+b+c) ;
     distancePearson(i)= (a*d-b*c)/sqrt((a+c)*(b+d)*(a+b)*(c+d));
 end
 
 % Pearson indicator
-PPearsonMostEqual = prctile(distancePearson,90);
-IPearsonMostEqual = find(distancePearson > PPearsonMostEqual);
-
-PPearsonLeastEqual = prctile(distancePearson,10);
-IPearsonLeastEqual = find(distancePearson < PPearsonLeastEqual);
+[pearsonFarValues,personFarIndex]=maxk(distancePearson,10);
+[pearsonCloseValues,personCloseIndex]=mink(distancePearson,10);
+pearsonFarDiff = ([personFarIndex(:),pearsonFarValues(:)]);
+pearsonCloseDiff = ([personCloseIndex(:),pearsonCloseValues(:)]);
 
 % Dice indicator
-PDiceMostEqual = prctile(distanceDice,90);
-IDiceMostEqual = find(distanceDice > PDiceMostEqual);
-
-PDiceLeastEqual = prctile(distanceDice,10);
-IDiceLeastEqual = find(distanceDice < PDiceLeastEqual);
+[diceFarValues,diceFarIndex]=maxk(distanceDice,10);
+[diceCloseValues,diceCloseIndex]=mink(distanceDice,10);
+diceFarDiff = ([diceFarIndex(:),diceFarValues(:)]);
+diceCloseDiff = ([diceCloseIndex(:),diceCloseValues(:)]);
 
 % Jaccard indicator
-PJaccardMostEqual = prctile(distanceJaccard,90);
-IJaccardMostEqual = find(distanceJaccard > PJaccardMostEqual);
-
-PJaccardLeastEqual = prctile(distanceJaccard,10);
-IJaccardLeastEqual = find(distanceJaccard < PJaccardLeastEqual);
+[jaccardFarValues,jaccardFarIndex]=maxk(distanceJaccard,10);
+[jaccardCloseValues,jaccardCloseIndex]=mink(distanceJaccard,10);
+jaccardFarDiff = ([jaccardFarIndex(:),jaccardFarValues(:)]);
+jaccardCloseDiff = ([jaccardCloseIndex(:),jaccardCloseValues(:)]);
