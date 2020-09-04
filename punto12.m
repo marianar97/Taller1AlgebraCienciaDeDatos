@@ -50,7 +50,7 @@ end
 
 %% Plot 5 most related pictures to my own picture for each distance
 
-my_picture = 17;
+my_picture = 17; % Index of my pic in the dataset
 
 figure(1)
 imshow(images{my_picture})
@@ -89,7 +89,24 @@ for nb=1:5
 end
 
 
-%% Evaluation of the set
+%% Conclusions
+
+% Al tomar mi imagen como centro del conjunto, las imágenes más cercanas
+% en la vecindad corresponden a mis otras imágenes.
+
+% Las métricas d2 (euclidea) y Frobenius, para el caso de las imágenes
+% representadas como vectores, arrojan el mismo resultado. No obstante, la
+% métrica Frobenius puede diferir al tratar las imágenes como matrices.
+
+% Mi imagen no corresponde a un punto interior pues, al ser un conjunto
+% discreto con imágenes finitas, toda bola con centro en una imagen y radio
+% mayor que cero podrá no encerrar imágenes.
+
+% Mi imagen sí corresponde a un punto frontera pues, al ser un conjunto
+% discreto y finito, al definir una bola con centro en mi imagen con radio
+% mayor que cero, esta contendrá mi imagen (que es parte del conjunto),
+% posiblemente otras imágenes del conjunto, pero a la vez contendrá el
+% espacio entre imágenes (que no pertenece al conjunto).
 
 
 %% General definition of metrics
